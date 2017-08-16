@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 const User = ({ name, image, repoCount }) => {
   return (
     <div>
-      <img src={image} alt="github profile picture" />
+      <img src={image} alt="github profile picture" width={200} />
 
       <p className='user-name'>
         { name }
@@ -24,11 +24,12 @@ const UserList  = ({users}) => {
         users
       </h2>
 
-      { users.map( ({login, avatar_url, public_repos}) => (
+      { users.map( ({login, avatar_url, public_repos}, index) => (
         <User
           name={login}
           image={avatar_url}
           repoCount={public_repos}
+          key={index}
          />
       )) }
     </div>
