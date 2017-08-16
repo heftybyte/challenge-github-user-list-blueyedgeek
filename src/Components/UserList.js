@@ -17,6 +17,12 @@ const User = ({ name, image, repoCount }) => {
   )
 };
 
+const usersSortedByRepoCount = (users) => {
+  return users.sort((u1, u2) => {
+    return u1.public_repos > u2.public_repos;
+  })
+};
+
 const UserList  = ({users}) => {
   return (
     <div>
@@ -24,7 +30,7 @@ const UserList  = ({users}) => {
         users
       </h2>
 
-      { users.map( ({login, avatar_url, public_repos}, index) => (
+      { usersSortedByRepoCount(users).map( ({login, avatar_url, public_repos}, index) => (
         <User
           name={login}
           image={avatar_url}
