@@ -17,23 +17,22 @@ const User = ({ name, image, repoCount }) => {
   )
 };
 
-export default class UserList extends Component {
-  render() {
-    console.log(this.props.users)
-    return (
-      <div>
-        <h2>
-          users
-        </h2>
+const UserList  = ({users}) => {
+  return (
+    <div>
+      <h2>
+        users
+      </h2>
 
-        { this.props.users.map( ({login, avatar_url, public_repos}) => (
-          <User
-            name={login}
-            image={avatar_url}
-            repoCount={public_repos}
-           />
-        )) }
-      </div>
-    );
-  }
+      { users.map( ({login, avatar_url, public_repos}) => (
+        <User
+          name={login}
+          image={avatar_url}
+          repoCount={public_repos}
+         />
+      )) }
+    </div>
+  );
 };
+
+export default UserList;
